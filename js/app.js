@@ -59,7 +59,7 @@ $('select[name="horn_creatures"]').on('change', function() {
   $(`img[id="${$selection}"]`).show()
 })
 
-function readJson() {
+function readJson () {
   $.get('./data/page-1.json', 'json')
   .then(data =>{
     data.forEach(hornObj =>{
