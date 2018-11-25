@@ -3,13 +3,16 @@ body{
   margin: auto;
 }
 main img{
+  display: flex;
   height: 300px;
   width: 300px;
 }
 
 main section{
+  align-items: center;
   float: left;
   height: 367px;
+  flex-direction: row;
 }
 
 main p{
@@ -17,7 +20,7 @@ main p{
 }
 
 #photo-template{
-  display: none;
+  display: flex;;
 }
 
 footer{
