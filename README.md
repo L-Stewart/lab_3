@@ -5,29 +5,39 @@ Estimate of time needed to complete: 1 hour
 
 Start time: 2:00pm
 
-Finish time: 3:00pm
+Finish time: 3:30pm
 
-Actual time needed to complete: 6:55pm
-
-
-
-Number and name of feature: FEATURE 2
-
-Estimate of time needed to complete: 1 hour
-
-Start time: 7:15pm
-
-Finish time: 8:30pm
-
-Actual time needed to complete: 1:15pm
+Actual time needed to complete: 1.5 hours
 
 
-Number and name of feature: FEATURE 3
+
+#Number and name of feature: FEATURE 2
 
 Estimate of time needed to complete: 1 hour
 
-Start time: 8:30pm
+Start time: 4:00pm
 
-Finish time: 9:20pm
+Finish time: 5:00pm
+
+Actual time needed to complete: 1 hour
+
+
+#Number and name of feature: FEATURE 3
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 5:00pm
+
+Finish time: 5:30pm
+
+Actual time needed to complete: 1 hour
+
+#Number and name of feature: FEATURE 4
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 5:30pm
+
+Finish time: 6:30pm
 
 Actual time needed to complete: 1 hour
