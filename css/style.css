@@ -1,31 +1,43 @@
+
 body{
   width: 960px;
   margin: auto;
 }
-main img{
+header {
   display: flex;
+  flex-direction: column;
+  width: 150px;
+  margin: auto;
+}
+h1 {
+  text-align: center;
+}
+button {
+  width: 100px;
+}
+select {
+  width: 200px;
+}
+main img{
   height: 300px;
   width: 300px;
 }
-
-main section{
-  align-items: center;
-  float: left;
-  height: 367px;
+main{
+  display: flex;
   flex-direction: row;
-}
+  flex-wrap: wrap;
+  justify-content: space-around;
 
-main p{
+}
+p {
   width: 300px;
+  margin-bottom: 15px;
 }
-
-#photo-template{
-  display: flex;;
+#horn-template{
+  display: none;
 }
-
 footer{
-  float: left;
-  width: 960px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
