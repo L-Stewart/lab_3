@@ -77,11 +77,11 @@ $('select[name="horn_creatures"]').on('change', function() {
   $(`img[id="${$selection}"]`).show()
 });
 
-$('#json2').click(function(){
+$('#json2').click(function() {
     $.get('./data/page-2.json', 'json')
     .then(arrClear())
-    .then(data =>{
-        data.forEach(hornObj =>{
+    .then(data => {
+        data.forEach(hornObj => {
           new Horn(hornObj);
         })
       })
@@ -89,8 +89,9 @@ $('#json2').click(function(){
     .then($('select').empty())
     .then($('select').append('<option value="default">Filter by keyword</option>'))
     .then($('#json1').attr('id', 'json2'))
-    .then(() => {allHorn.forEach(horn => {
-        horn.render();
+    .then(() => {
+        renderToPage();
+        allHorn.forEach(horn => { 
         horn.optionMenu();
       })
     })
@@ -99,8 +100,8 @@ $('#json2').click(function(){
 $('#json1').click(function(){
   $.get('./data/page-1.json', 'json')
   .then(arrClear())
-  .then(data =>{
-      data.forEach(hornObj =>{
+  .then(data => {
+      data.forEach(hornObj => {
         new Horn(hornObj);
       })
     })
@@ -108,8 +109,9 @@ $('#json1').click(function(){
   .then($('select').empty())
   .then($('select').append('<option value="default">Filter by keyword</option>'))
   .then($('#json2').attr('id', 'json1'))
-  .then(() => {allHorn.forEach(horn => {
-      horn.render();
+  .then(() => {
+      renderToPage();
+      allHorn.forEach(horn => {
       horn.optionMenu();
     })
   })
