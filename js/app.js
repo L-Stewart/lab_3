@@ -11,6 +11,7 @@ function Horn (obj){
   
   allHorn.push(this);
 }
+
 Horn.prototype.toHtml = function () {
   
   let templateHtml = $('#horns-template').html();
@@ -20,6 +21,7 @@ Horn.prototype.toHtml = function () {
   let newHornTemplate = hornTemplate(this);
   
   return newHornTemplate;
+
 
 };
 
@@ -75,3 +77,5 @@ function readJson () {
 }
 
 $(() => readJson());
+
+
