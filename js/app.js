@@ -11,23 +11,24 @@ function Horn (obj){
   
   allHorn.push(this);
 }
+
+Horn.prototype.toHtml = function () {
   
+  let templateHtml = $('#horns-template').html();
+  
+  let hornTemplate = Handlebars.compile(templateHtml);
+  
+  let newHornTemplate = hornTemplate(this);
+  
+  return newHornTemplate;
 
-Horn.prototype.render = function () {
-  $('main').append('<section id="picture"></section>');
-  let $picture = $('section[id="picture"]');
-  let picTemplate = $('#photo-template').html();
 
-  $picture.html(picTemplate);
-  $picture.find('h2').text(this.title);
-  $picture.find('img').attr({
-    src: this.image_url,
-    id: this.keyword
+};
+
+function renderToPage () {
+  allHorn.forEach(newHorns => {
+  $('main').append(newHorns.toHtml())
 });
-  $picture.find('p').text(this.description);
-  
-  $picture.removeClass('picture');
-  $picture.attr('id', this.title);
 
 }
 
@@ -67,8 +68,9 @@ function readJson () {
       new Horn(hornObj);
     })
   })
-  .then(() => {allHorn.forEach(horn => {
-    horn.render();
+  .then(() => {
+    renderToPage();
+    allHorn.forEach(horn => {
     horn.optionMenu();
   })
 })
