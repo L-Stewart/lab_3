@@ -85,6 +85,7 @@ $('#json2').click(function(){
       })
     .then($( 'main' ).empty())
     .then($('select').empty())
+    .then($('select').append('<option value="default">Filter by keyword</option>'))
     .then($('#json1').attr('id', 'json2'))
     .then(() => {allHorn.forEach(horn => {
         horn.render();
@@ -103,6 +104,7 @@ $('#json1').click(function(){
     })
   .then($( 'main' ).empty())
   .then($('select').empty())
+  .then($('select').append('<option value="default">Filter by keyword</option>'))
   .then($('#json2').attr('id', 'json1'))
   .then(() => {allHorn.forEach(horn => {
       horn.render();
