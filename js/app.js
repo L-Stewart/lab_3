@@ -11,6 +11,7 @@ function Horn (obj){
   
   allHorn.push(this);
 }
+  
 
 Horn.prototype.render = function () {
   $('main').append('<section id="picture"></section>');
@@ -74,3 +75,5 @@ function readJson () {
 }
 
 $(() => readJson());
+
+
