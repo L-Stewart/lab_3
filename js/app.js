@@ -126,8 +126,8 @@ $('#json2').click(function() {
         })
       })
     .then($( 'main' ).empty())
-    .then($('select').empty())
-    .then($('select').append('<option value="default">Filter by keyword</option>'))
+    .then($('#filter').empty())
+    .then($('#filter').append('<option value="default">Filter by keyword</option>'))
     .then($('#json1').attr('id', 'json2'))
     .then(() => {
         renderToPage();
@@ -146,8 +146,8 @@ $('#json1').click(function(){
       })
     })
   .then($( 'main' ).empty())
-  .then($('select').empty())
-  .then($('select').append('<option value="default">Filter by keyword</option>'))
+  .then($('#filter').empty())
+  .then($('#filter').append('<option value="default">Filter by keyword</option>'))
   .then($('#json2').attr('id', 'json1'))
   .then(() => {
       renderToPage();
