@@ -8,33 +8,28 @@ function Horn (obj){
   this.image_url = obj.image_url;
   this.description = obj.description;
   this.keyword = obj.keyword;
+  this.horns = obj.horns
   
   allHorn.push(this);
 };
 
 Horn.prototype.toHtml = function () {
-  
   let templateHtml = $('#horns-template').html();
-  
   let hornTemplate = Handlebars.compile(templateHtml);
-  
   let newHornTemplate = hornTemplate(this);
   
   return newHornTemplate;
-
-
 };
 
 function renderToPage () {
   allHorn.forEach(newHorns => {
   $('main').append(newHorns.toHtml())
 });
-
 };
 
 Horn.prototype.optionMenu = function () {
   if( keys.indexOf( this.keyword ) === -1 ){
-    $('select').append('<option class = "option"></option>');
+    $('#filter').append('<option class = "option"></option>');
     let $option = $('option[class="option"]');
 
     $option.attr('value', this.keyword);
@@ -57,6 +52,12 @@ const arrClear = function(){
   }
 };
 
+const clearRender = function() {
+  $('main').empty();
+  allHorn.forEach(horn => { 
+    horn.optionMenu();
+  })
+}
 
 //selecting box filtering
 $('select[name="horn_creatures"]').on('change', function() {
@@ -77,6 +78,45 @@ $('select[name="horn_creatures"]').on('change', function() {
   $(`img[id="${$selection}"]`).show()
 });
 
+$('select[name="sort_creatures"]').on('change', function() {
+  let $selection = $(this).val();
+
+  if ($selection === 'default') {
+    arrClear();
+    readJson();
+    clearRender();
+    renderToPage();
+  } else if ($selection === 'sort_title') {
+    allHorn.sort(function(a, b) {
+      var nameA = a.title.toUpperCase(); 
+      var nameB = b.title.toUpperCase(); 
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+    clearRender();
+    renderToPage();
+  } else if ($selection === 'sort_num_horns') {
+    allHorn.sort(function(a, b) {
+      var hornNumA = a.horns;
+      var hornNumB = b.horns;
+      if(hornNumA < hornNumB) {
+        return -1;
+      }
+      if (hornNumA > hornNumB) {
+        return 1;
+      }
+      return 0;
+    })
+    clearRender();
+    renderToPage();
+  }
+})
+
 $('#json2').click(function() {
     $.get('./data/page-2.json', 'json')
     .then(arrClear())
@@ -86,8 +126,8 @@ $('#json2').click(function() {
         })
       })
     .then($( 'main' ).empty())
-    .then($('select').empty())
-    .then($('select').append('<option value="default">Filter by keyword</option>'))
+    .then($('#filter').empty())
+    .then($('#filter').append('<option value="default">Filter by keyword</option>'))
     .then($('#json1').attr('id', 'json2'))
     .then(() => {
         renderToPage();
@@ -106,8 +146,8 @@ $('#json1').click(function(){
       })
     })
   .then($( 'main' ).empty())
-  .then($('select').empty())
-  .then($('select').append('<option value="default">Filter by keyword</option>'))
+  .then($('#filter').empty())
+  .then($('#filter').append('<option value="default">Filter by keyword</option>'))
   .then($('#json2').attr('id', 'json1'))
   .then(() => {
       renderToPage();
@@ -116,7 +156,6 @@ $('#json1').click(function(){
     })
   })
 });
-
 
 function readJson () {
   $.get('./data/page-1.json', 'json')
